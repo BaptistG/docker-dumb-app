@@ -20,4 +20,4 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 sudo docker build -t dumb_app .
 
-sudo docker run -p 3000:8080 dumb_app
+sudo docker run -p 3000:8080 -d dumb_app
