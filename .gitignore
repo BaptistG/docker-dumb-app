@@ -1,3 +1,4 @@
 terraform/.*
 terraform/terraform*
 terraform/variables.tf
+aws_shell/config.sh
