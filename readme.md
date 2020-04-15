@@ -11,13 +11,14 @@ docker build -t dumb_app .
 # Launch a container using the dumb_app image you just built
 docker run -p 3000:8080 dumb_app
 ```
+The app should be running on localhost:3000
 
 ## Deploying your app to GCP
 ### Prerequisites
 Have terraform installed on your machine
 
-Download credentias from the [the service account key page in the Cloud Console ](https://console.cloud.google.com/apis/credentials/serviceaccountkey)
-Once the json file has been download set the following environment variable:
+Download credentials from the [the service account key page in the Cloud Console ](https://console.cloud.google.com/apis/credentials/serviceaccountkey)
+Once the json file has been downloaded, set the following environment variable:
 ```bash
 export GOOGLE_CLOUD_KEYFILE_JSON=/path/to/json/file
 ```
