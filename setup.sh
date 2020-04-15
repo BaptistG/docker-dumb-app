@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Download an install docker (straight from docker website)
 sudo apt-get update
 sudo apt-get install -y \
     apt-transport-https \
@@ -18,6 +20,9 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
+# Build image from dockerfile
 sudo docker build -t dumb_app .
 
+# Launch container and map port 3000 on host machine to port 8080 in container)
+# Running a detached container so that everything works when the user disconnects from the server
 sudo docker run -p 3000:8080 -d dumb_app

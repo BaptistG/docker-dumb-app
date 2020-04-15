@@ -1,35 +1,52 @@
-To test locally:
+# Welcome to Dumb app!
 
+# Testing locally
+
+After you've made changes to the code you will need to rebuild the docker image and launch the container. To do so, execute the following commands in the same directory as the Dockerfile:
+
+```bash
+#Build the image
 docker build -t dumb_app .
 
+# Launch a container using the dumb_app image you just built
 docker run -p 3000:8080 dumb_app
+```
 
-Don't forget to clean up after yourself by running (unless you have other containers you want to keep):
-docker container prune
+## Deploying your app to GCP
+### Prerequisites
+Have terraform installed on your machine
 
-Script total:
-#!/bin/bash
-sudo apt-get update
-sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
+Download credentias from the [the service account key page in the Cloud Console ](https://console.cloud.google.com/apis/credentials/serviceaccountkey)
+Once the json file has been download set the following environment variable:
+```bash
+export GOOGLE_CLOUD_KEYFILE_JSON=/path/to/json/file
+```
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
+Now go into the terraform folder and create a new file called variables.tf and paste the following lines:
+```bash
+variable  "gcp_user"  {
+	default = "you_gcp_user" # UPDATE THIS VALUE
+}
 
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+variable  "gcp_project_id"  {
+	default = "your_gcp_project_id" # UPDATE THIS VALUE
+}
+```
+### Deploying the app
+Go into the terraform folder and run the following commands:
+```bash
+terraform init
+terraform apply # Write yes when prompted to do so
+```
 
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+Your app should now be up and running, to get the external IP you can go to the compute page of your GCP account.
 
-git clone https://github.com/padok-team/docker-dumb-app.git
-cd docker-dumb-app/
-sudo docker build -t dumb_app .
+To check that the app is running go to <IP>:3000 in your browser.
 
-sudo docker run -p 3000:8080 dumb_app
+### Stopping the app
+Go to the terraform folder and run:
+```bash
+terraform destroy # Write yes when prompted to do so
+```
+
+Everything has been deleted and your app is no longer running.
