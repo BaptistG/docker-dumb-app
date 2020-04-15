@@ -36,7 +36,7 @@ variable  "gcp_project_id"  {
 Go into the terraform folder and run the following commands:
 ```bash
 terraform init
-terraform apply # Write yes when prompted to do so
+terraform apply -var "branch=branch_you_want_to_deploy"# Write yes when prompted to do so
 ```
 
 Your app should now be up and running, to get the external IP you can go to the compute page of your GCP account.
