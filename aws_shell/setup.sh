@@ -20,6 +20,9 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
+# Remove previous version of git repo if it exists
+if [ -d docker-dumb-app ]; then rm -rf docker-dumb-app; fi
+
 # Clone the remote git repo
 git clone -b $1 https://github.com/BaptistG/docker-dumb-app.git
 cd docker-dumb-app
