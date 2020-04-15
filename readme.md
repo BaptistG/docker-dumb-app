@@ -15,7 +15,8 @@ The app should be running on localhost:3000
 
 ## Deploying your app to an existing AWS instance using a shell script
 ### Prerequisites
-Launch a EC2 instance on AWS and get the public address of that instance
+Launch an EC2 instance on AWS and get the public address of that instance.
+
 Make sure ports 22 and 3000 are accessible by your machine
 
 Create a config.sh file in the aws_shell directory, paste the following lines in that file
