@@ -5,7 +5,7 @@
 After you've made changes to the code you will need to rebuild the docker image and launch the container. To do so, execute the following commands in the same directory as the Dockerfile:
 
 ```bash
-#Build the image
+# Build the image
 docker build -t dumb_app .
 
 # Launch a container using the dumb_app image you just built
@@ -30,6 +30,10 @@ variable  "gcp_user"  {
 
 variable  "gcp_project_id"  {
 	default = "your_gcp_project_id" # UPDATE THIS VALUE
+}
+
+variable "branch" {
+    default = "master"
 }
 ```
 ### Deploying the app
