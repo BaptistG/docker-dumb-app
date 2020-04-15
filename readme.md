@@ -45,7 +45,7 @@ terraform apply -var "branch=branch_you_want_to_deploy"# Write yes when prompted
 
 Your app should now be up and running, to get the external IP you can go to the compute page of your GCP account.
 
-To check that the app is running go to <IP>:3000 in your browser.
+To check that the app is running go to external_ip:3000 in your browser.
 
 ### Stopping the app
 Go to the terraform folder and run:
